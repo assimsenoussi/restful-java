@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
 @ApplicationPath("/")
-public class ScoreService extends javax.ws.rs.core.Application  {
+public class ScoreService{
 
 	// GET
 	@GET @Path("/score/wins")@Produces("text/plain")
@@ -26,7 +26,7 @@ public class ScoreService extends javax.ws.rs.core.Application  {
 	public int increaseWins() { return Score.WINS++; }
 	     
 	@POST @Path("/score/ties")@Produces("text/plain")      
-	public int increaseTies() { return Score.WINS++;}
+	public int increaseTies() { return Score.TIES++;}
 	     
 	@POST @Path("/score/losses")@Produces("text/plain")         
 	public int increaseLosses() {return Score.LOSSES++;}
@@ -36,17 +36,6 @@ public class ScoreService extends javax.ws.rs.core.Application  {
 	@Path("/score")
 	@Produces("application/json")
 	public String getScore() {
-		System.out.println("ndkjfndjfndjnfkjn");
-	   String pattern = 
-	      "{ \"wins\":\"%s\", \"losses\":\"%s\", \"ties\": \"%s\"}";
-	   return String.format(pattern,  Score.WINS, Score.LOSSES, Score.TIES );   
-	}
-	
-	@GET
-	@Path("")
-	@Produces("application/json")
-	public String getScore1() {
-		System.out.println("ndkjfndjfndjnfkjn");
 	   String pattern = 
 	      "{ \"wins\":\"%s\", \"losses\":\"%s\", \"ties\": \"%s\"}";
 	   return String.format(pattern,  Score.WINS, Score.LOSSES, Score.TIES );   
