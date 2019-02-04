@@ -7,28 +7,30 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Application;
 
 @ApplicationPath("/")
-public class ScoreService{
+@Path("/")
+public class ScoreService extends Application{
 
-	// GET
-	@GET @Path("/score/wins")@Produces("text/plain")
+	// GET	
+	@GET @Path("/score/wins")@Produces("application/json")
 	public int getWins() {return Score.WINS;}
 	     
-	@GET @Path("/score/losses")@Produces("text/plain")
+	@GET @Path("/score/losses")@Produces("application/json")
 	public int getLosses() {return Score.LOSSES;}
 	     
-	@GET @Path("/score/ties")@Produces("text/plain")
+	@GET @Path("/score/ties")@Produces("application/json")
 	public int getTies() {return Score.TIES;}
 	
 	// INCREASE
-	@POST @Path("/score/wins")@Produces("text/plain")
+	@POST @Path("/score/wins")@Produces("application/json")
 	public int increaseWins() { return Score.WINS++; }
 	     
-	@POST @Path("/score/ties")@Produces("text/plain")      
+	@POST @Path("/score/ties")@Produces("application/json")   
 	public int increaseTies() { return Score.TIES++;}
 	     
-	@POST @Path("/score/losses")@Produces("text/plain")         
+	@POST @Path("/score/losses")@Produces("application/json")         
 	public int increaseLosses() {return Score.LOSSES++;}
 	
 	
